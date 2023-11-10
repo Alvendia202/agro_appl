@@ -1,5 +1,13 @@
+// ignore_for_file: unused_import
+
+import 'package:agro_appl/screens/cart_page.dart';
 import 'package:agro_appl/screens/cart_screen.dart';
+import 'package:agro_appl/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+import '../list/menulist.dart';
+import '../model/cartmodel.dart';
 
 class HomeScreen extends StatefulWidget {
   static const routeName = '/home_screen';
@@ -43,7 +51,7 @@ class _HomeScreenState extends State<HomeScreen> {
           IconButton (
             onPressed: () {
               Navigator.of(context).push(
-              MaterialPageRoute(builder: (context) => const CartScreen()
+              MaterialPageRoute(builder: (context) => const CartPage()
               ),
               );
             },
@@ -54,42 +62,89 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ],
         ),
-        body: SingleChildScrollView (
-            child: 
-              Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-         Container(
-           padding: const EdgeInsets.all(15),
-                width: double.infinity,
-                color: Colors.white,
-                child: Center(
-                  child: TextField(
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(5.0),
-                          borderSide: const BorderSide(
-                          color: Colors.transparent, 
-                          width: 10.0, 
+      body: Container(
+          decoration: BoxDecoration(
+              gradient: LinearGradient(
+                  colors: [titleTextColor, dotColor],
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  stops: const [0.1, 0.9],
                   ),
-                ),
-                        hintText: 'search here',
-                        contentPadding: const EdgeInsets.all(15),
-                        hintStyle: const TextStyle(
-                          color: Colors.grey,
-                          fontSize: 13.0,
-                          ),
-                          suffixIcon: const Icon(Icons.search,
-                          color:Color.fromRGBO(0, 0, 0, 1),
-                        ),       
-              ),
-            ),
-            ),
-        ),  
-              ],
-              ),
+                  ),
+            
+             child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const SizedBox(height: 48),
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 24.0),
+            child: Text('Good Day!'),
+          ),
 
-        ),
-        );
-}
+          const SizedBox(height: 4),
+
+          // Let's order fresh items for you
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 24.0),
+            child: Text(
+              "Let's order fresh items for you",
+              style: GoogleFonts.notoSerif(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+
+          const SizedBox(height: 24),
+
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 24.0),
+            child: Divider(),
+          ),
+
+          const SizedBox(height: 24),
+
+          // categories -> horizontal listview
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 24.0),
+            child: Text(
+              "Products Menu",
+              style: GoogleFonts.notoSerif(
+                //fontWeight: FontWeight.bold,
+                fontSize: 18,
+              ),
+            ),
+          ),
+          Expanded(
+            child: Consumer<CartModel>(
+              builder: (context, value, child) {
+                return GridView.builder(
+                  padding: const EdgeInsets.all(12),
+                  physics: const NeverScrollableScrollPhysics(),
+                  itemCount: value.shopItems.length,
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    childAspectRatio: 1 / 1.2,
+                  ),
+                  itemBuilder: (context, index) {
+                    return GroceryItemTile(
+                      itemName: value.shopItems[index][0],
+                      itemPrice: value.shopItems[index][1],
+                      imagePath: value.shopItems[index][2],
+                      color: value.shopItems[index][3],
+                      onPressed: () =>
+                          Provider.of<CartModel>(context, listen: false)
+                              .addItemToCart(index),
+                    );
+                  },
+                );
+              },
+            ),
+          ),
+        ],
+      ),
+                  ),
+      
+    );
+  }
 }

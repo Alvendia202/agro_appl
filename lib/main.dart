@@ -1,6 +1,7 @@
+import 'package:agro_appl/model/cartmodel.dart';
 import 'package:agro_appl/screens/getstart_screen.dart';
 import 'package:flutter/material.dart';
-
+import 'package:provider/provider.dart';
 import './screens/login_screen.dart';
 import './screens/signup_screen.dart';
 import './screens/home_screen.dart';
@@ -15,8 +16,10 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
+     return ChangeNotifierProvider(
+      create: (context) => CartModel(),
+      child: MaterialApp(
+      title: 'Agro_appl',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
@@ -27,6 +30,7 @@ class MyApp extends StatelessWidget {
         SignupScreen.routeName: (ctx) => const SignupScreen(),
         HomeScreen.routeName: (ctx) => const HomeScreen(),
       },
+      ),
     );
   }
 }
