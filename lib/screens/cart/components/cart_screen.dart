@@ -1,7 +1,7 @@
 // ignore_for_file: deprecated_member_use, use_key_in_widget_constructors
 
 import 'package:agro_appl/database/db_agro.dart';
-import 'package:agro_appl/widgets/cart_detail.dart';
+import 'package:agro_appl/screens/cart/components/cart_detail.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:agro_appl/model/cart_model.dart';

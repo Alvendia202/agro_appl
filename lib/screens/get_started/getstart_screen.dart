@@ -1,8 +1,9 @@
-import 'package:agro_appl/screens/login_screen.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:agro_appl/list/images_list.dart';
-import 'package:agro_appl/widgets/getstart_tile.dart';
+import 'package:agro_appl/screens/get_started/components/images_list.dart';
+import 'package:agro_appl/screens/get_started/components/getstart_tile.dart';
+
+import '../login/login_screen.dart';
 
 class GetStartedScreen extends StatefulWidget {
   const GetStartedScreen({Key? key}) : super(key: key);
@@ -139,7 +140,7 @@ class _GetStartedScreenState extends State<GetStartedScreen> {
                       color: Color.fromARGB(255, 0, 117, 10),
                       alignment: Alignment.center,
                       child: const Text(
-                        "GET STARTED NOW",
+                        "Shop now",
                         style: TextStyle(
                             color: Colors.white, fontWeight: FontWeight.w600),
                       ),

@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-import '../model/cartmodel.dart';
+import '../../model/cartmodel.dart';
 
 class CartPage extends StatelessWidget {
+  static const routeName = '/cart_page';
   const CartPage({super.key});
 
   @override

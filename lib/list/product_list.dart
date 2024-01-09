@@ -2,15 +2,16 @@
 import 'package:agro_appl/database/db_agro.dart';
 import 'package:agro_appl/model/cart_model.dart';
 import 'package:agro_appl/model/item_model.dart';
-import 'package:agro_appl/screens/cart_screen.dart';
-import 'package:agro_appl/widgets/cart_detail.dart';
+import 'package:agro_appl/screens/cart/components/cart_screen.dart';
+import 'package:agro_appl/screens/cart/components/cart_detail.dart';
 import 'package:badges/badges.dart' as badges;
 import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class ProductList extends StatefulWidget {
-  const ProductList({Key? key}) : super(key: key);
+  const ProductList({Key? key, 
+  required products}) : super(key: key);
 
   @override
   State<ProductList> createState() => _ProductListState();

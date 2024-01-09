@@ -27,8 +27,8 @@ List<Slide> getSlides() {
     ),
     Slide(
       desc: "Food delivery or pickup from local store, Explore shops that deliver near you.",
-      title: "Eat",
-      imagePath: "assets/images/get3.jpg",
+      title: "Deliver",
+      imagePath: "assets/images/get_deliver.gif",
       imageSize: "300x300",
     ),
   ];

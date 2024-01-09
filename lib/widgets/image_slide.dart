@@ -1,4 +1,4 @@
-import 'package:agro_appl/list/images_list.dart';
+import 'package:agro_appl/screens/get_started/components/images_list.dart';
 import 'package:flutter/material.dart';
 
 class SlideItem extends StatelessWidget {
